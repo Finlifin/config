@@ -1,0 +1,139 @@
+{
+	"name": "tauri-vscode",
+	"publisher": "tauri-apps",
+	"displayName": "Tauri",
+	"description": "Enhances the experience of Tauri apps development",
+	"license": "MIT OR Apache-2.0",
+	"icon": "assets/icon.png",
+	"bugs": {
+		"url": "https://github.com/tauri-apps/tauri-vscode/issues",
+		"email": "smcbreen@microsoft.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tauri-apps/tauri-vscode.git"
+	},
+	"version": "0.2.6",
+	"engines": {
+		"vscode": "^1.66.0"
+	},
+	"categories": [
+		"Other",
+		"Snippets"
+	],
+	"keywords": [
+		"tauri",
+		"desktop",
+		"development",
+		"rust"
+	],
+	"activationEvents": [
+		"workspaceContains:**/tauri.conf.json",
+		"onCommand:tauri.init",
+		"onCommand:tauri.deps-install",
+		"onCommand:tauri.deps-update",
+		"onCommand:tauri.dev",
+		"onCommand:tauri.build",
+		"onCommand:tauri.build-debug",
+		"onFileSystem:tauri"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"jsonValidation": [
+			{
+				"fileMatch": [
+					"tauri.conf.json",
+					"tauri.conf.json5",
+					"tauri.*.conf.json",
+					"tauri.*.conf.json5"
+				],
+				"url": "tauri://schemas/config.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "tauri.init",
+				"title": "Init",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.deps-install",
+				"title": "Install Missing Dependencies",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.deps-update",
+				"title": "Update Dependencies",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.dev",
+				"title": "Dev",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.build",
+				"title": "Build",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.build-debug",
+				"title": "Build with debug",
+				"category": "Tauri"
+			}
+		],
+		"snippets": [
+			{
+				"language": "rust",
+				"path": "./snippets/rust.json"
+			},
+			{
+				"language": "markdown",
+				"path": "./snippets/markdown.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"format": "prettier ./**/*.{json,ts,js} -w --ignore-path .gitignore",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "8.0.1",
+		"@types/mocha": "10.0.1",
+		"@types/node": "16.18.16",
+		"@types/vscode": "1.66.0",
+		"@typescript-eslint/eslint-plugin": "5.51.0",
+		"@typescript-eslint/parser": "5.51.0",
+		"@vscode/test-electron": "2.1.5",
+		"eslint": "8.33.0",
+		"mocha": "10.2.0",
+		"prettier": "2.8.1",
+		"typescript": "4.9.5"
+	},
+	"dependencies": {
+		"@types/semver": "^7.3.12",
+		"axios": "^1.0.0",
+		"glob": "8.1.0",
+		"run-in-terminal": "^0.0.3",
+		"strip-ansi": "^6.0.1"
+	},
+	"resolutions": {
+		"brace-expansion": "^2.0.1"
+	},
+	"__metadata": {
+		"id": "53763e89-ec31-4d0c-b220-f714761180e5",
+		"publisherId": "1647447c-0980-42c6-9fc3-db7ff8698d89",
+		"publisherDisplayName": "Tauri",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1679133418361,
+		"preRelease": false
+	}
+}
